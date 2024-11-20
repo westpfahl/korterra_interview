@@ -130,7 +130,7 @@ output_file_path = "path to output folder"
 csv_data = read_csv(input_file_path + file_name)
 
 # replace None values with 0
-csv_data = csv_data(None, 0)
+csv_data = csv_data.replace(None, 0)
 
 #create column that is a product of the item quantity multiplied by the unit price
 csv_data['TotalPrice'] = csv_data['Quantity'] * csv_data['UnitPrice']
