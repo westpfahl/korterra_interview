@@ -15,6 +15,7 @@
 #### Sample Table Structures:
 
 `Customers`: `CustomerID`, `CustomerName`
+
 `Orders`: `OrderID`, `CustomerID`, `OrderDate`, `OrderAmount` 
 #### Expected Output:
 | CustomerID | CustomerName | TotalSales |
@@ -28,6 +29,16 @@
 CREATE PROCEDURE GetCustomerOrders
 AS
 BEGIN
-    -- Procedure body will go here
+    SELECT c.CustomerID, c.CustomerName, 
+           SUM(COALESCE(o.OrderAmount, 0)) AS TotalSales
+    FROM Orders o
+    INNER JOIN Customers c ON o.CustomerID = c.CustomerID
+    WHERE o.OrderDate >= DATEADD(day, -30, GETDATE())
+    AND o.OrderDate IS NOT NULL
+    AND c.CustomerID IS NOT NULL
+    AND o.CustomerID IS NOT NULL
+    GROUP BY c.CustomerID, c.CustomerName
+    ORDER BY TotalSales DESC;
 END
+
 ```
