@@ -124,12 +124,13 @@ def upload_blob_file(self, blob_service_client: BlobServiceClient, container_nam
         blob_client = container_client.upload_blob(name="sample-blob.txt", data=data, overwrite=True)
 
 
-#define path to CSV and output folder
-input_file_path = "path to csv"
-output_file_path = "path to folder"
+#define file name, path to CSV, and output folder
+file_name = "file.csv"
+input_file_path = "path to csv folder"
+output_file_path = "path to output folder"
 
 # Read the CSV
-csv_data = read_csv(input_file_path)
+csv_data = read_csv(input_file_path + file_name)
 
 # replace None values with 0
 csv_data = csv_data(None, 0)
@@ -137,10 +138,12 @@ csv_data = csv_data(None, 0)
 #create column that is a product of the item quantity multiplied by the unit price
 csv_data['TotalPrice'] = csv_data['Quantity'] * csv_data['UnitPrice']
 
+output_file_name = output_file_path + "output_file.csv"
+
 if sales_df is not None:
-    print(f"Successfully read CSV at {input_file_path}.")
-    sales_df.to_csv(output_file_path, index=False)
-    print(f"Transformed data saved to {output_file_path}")
+    print(f"Successfully read CSV at {input_file_path + file_name}.")
+    sales_df.to_csv(output_file_name, index=False)
+    print(f"Transformed data saved to {output_file_name}")
 
 else:
     print(f"Dateframe is empty or non-existant.")
@@ -148,6 +151,5 @@ else:
 #define your variables for csv upload to azure blob
 container_name = "container name"
 blob_name = "blob name"
-upload_to_azure_blob_storage(container_name, blob_name, output_file_path)
-
+upload_to_azure_blob_storage(container_name, blob_name, output_file_name)
 ```
