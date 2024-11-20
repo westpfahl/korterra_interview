@@ -1,5 +1,9 @@
-# Korterra Technical Questions
+# Korterra Challenge Questions
+
+
 ***
+
+
 # SQL / Stored Procedure Challenge:
 
 ### **Objective:** Create a stored procedure that retrieves customer orders from the past 30 days and calculates the total sales amount per customer.
