@@ -117,13 +117,6 @@ def upload_to_azure_blob_storage(container_name, blob_name, file_path):
         print(f"Error uploading file to Azure Blob Storage: {e}")
         return False
 
-
-def upload_blob_file(self, blob_service_client: BlobServiceClient, container_name: str):
-    
-    with open(file=os.path.join('filepath', 'filename'), mode="rb") as data:
-        blob_client = container_client.upload_blob(name="sample-blob.txt", data=data, overwrite=True)
-
-
 #define file name, path to CSV, and output folder
 file_name = "file.csv"
 input_file_path = "path to csv folder"
