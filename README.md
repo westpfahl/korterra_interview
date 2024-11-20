@@ -58,9 +58,9 @@ Create a Python script that simulates part of an ADF pipeline, focusing on trans
 2.  Transform the sales data by adding a new column called `TotalPrice`, which is the product of `Quantity` and `UnitPrice`.
 3.  Save the transformed data as a new CSV file.
 4.  Upload the new CSV file to Azure Blob Storage.
-### Bonus:
-#### Add error handling for potential file read/write issues.
-#### Assume the Azure Storage credentials are already available in environment variables.
+#### **Bonus:**
+1. Add error handling for potential file read/write issues.
+2. Assume the Azure Storage credentials are already available in environment variables.
 
 
 
